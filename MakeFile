@@ -1,5 +1,5 @@
 create_tmux:
-	tmux new -s french_doll -d 'python example.py'
+	tmux new -s french_doll -d 'python train.py'
 
 reattach_tmux:
 	tmux attach-session -t french_doll

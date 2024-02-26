@@ -56,7 +56,6 @@ if not os.path.exists(nli_dataset_path):
 # Read the AllNLI.tsv.gz file and create the training dataset
 logging.info("Read AllNLI train dataset")
 
-
 def add_to_samples(sent1, sent2, label):
     if sent1 not in train_data:
         train_data[sent1] = {"contradiction": set(), "entailment": set(), "neutral": set()}
@@ -133,16 +132,16 @@ model.fit(
 ##############################################################################
 
 
-model = SentenceTransformer(model_save_path)
-stsb_test = load_dataset("mteb/stsbenchmark-sts", split="test")
-test_evaluator = EmbeddingSimilarityEvaluator(
-    stsb_test["sentence1"],
-    stsb_test["sentence2"],
-    [score / 5 for score in stsb_test["score"]],
-    main_similarity=SimilarityFunction.COSINE,
-    name="sts-test",
-)
-test_evaluator(model, output_path=model_save_path)
+# model = SentenceTransformer(model_save_path)
+# stsb_test = load_dataset("mteb/stsbenchmark-sts", split="test")
+# test_evaluator = EmbeddingSimilarityEvaluator(
+#     stsb_test["sentence1"],
+#     stsb_test["sentence2"],
+#     [score / 5 for score in stsb_test["score"]],
+#     main_similarity=SimilarityFunction.COSINE,
+#     name="sts-test",
+# )
+# test_evaluator(model, output_path=model_save_path)
 
 
 # # Optionally, save the model to the Hugging Face Hub!
