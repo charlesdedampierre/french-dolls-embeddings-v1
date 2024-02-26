@@ -1,0 +1,12 @@
+create_tmux:
+	tmux new -s french_doll -d 'python example.py'
+
+reattach_tmux:
+	tmux attach-session -t french_doll
+
+kill_session:
+	tmux kill-session -t french_doll
+
+monitor_session:
+	tmux ls
+# to leave: Press Ctrl + b (release both keys), then press ddb
